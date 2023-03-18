@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>222</div>
+    <span>3333</span>
+    <script>
+        var div=document.querySelector('div');
+        //返回上下一个兄弟节点，包括文本节点
+        console.log(div.previousSibling);
+        console.log(div.nextSibling);
+        //返回上下一个兄弟元素节点,有兼容性问题，找不到返回null
+        console.log(div.previousElementSibling);
+        console.log(div.nextElementSibling);
+
+    </script>
+</body>
+</html>

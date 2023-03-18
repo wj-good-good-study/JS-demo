@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 400px;
+            border-bottom: 1px solid #ccc;
+            margin: auto;
+        }
+        .box input{
+            width: 350px;
+            height: 30px;
+            border: none;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="text" placeholder="请输入账号">
+    </div>
+    <div class="box">
+        <input type="password" name="" id="password" placeholder="请输入密码">
+        <span><a href="#" id="eye">闭眼</a></span>
+    </div>
+    
+    <script>
+        var password=document.getElementById('password');
+        var eye=document.getElementById('eye');
+        var flag=0;
+        eye.onclick=function(){
+            if(flag==0){
+                password.type='text';
+                eye.innerText='睁眼';
+                flag=1;
+            }else{
+                password.type='password';
+                eye.innerText='闭眼';
+                flag=0;
+            }
+
+        }
+    </script>
+</body>
+</html>

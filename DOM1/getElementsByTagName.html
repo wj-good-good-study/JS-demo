@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 获得指定标签名的对象 -->
+    <ul id="myul">
+        <li><p>我</p></li>
+        <li><p>是</p></li>
+        <li><p>你</p></li>
+        <li><p>爹</p></li>
+    </ul>
+    <p>
+        分割线-----------
+    </p>
+    <ol>
+        <li><p>你</p></li>
+        <li><p>是</p></li>
+        <li><p>我</p></li>
+        <li><p>儿</p></li>
+    </ol>
+    <script>
+        var dad=document.getElementsByTagName('li');
+        console.log(dad);
+    /* 遍历对象 */
+        for(var i=0;i<dad.length;i++){
+            console.log('dad->',dad[i]);
+        }
+    /* 通过父元素查找子元素 element.getElementsByTagName()*/
+        var ol=document.getElementsByTagName('ol');
+        var li=ol[0].getElementsByTagName('li');
+        console.log('ol->',li);
+        for(var i=0;i<li.length;i++){
+            var p=li[i].getElementsByTagName('p');
+            console.log(p[0]);
+        }
+    /* 使用id查找子元素合集 */
+        var myul=document.getElementById('myul');
+        var ulli=myul.getElementsByTagName('li');
+        console.log('ul->',ulli);
+        for(var i=0;i<ulli.length;i++){
+            var p=ulli[i].getElementsByTagName('p');
+            console.log(p[0]);
+        }
+    </script>
+</body>
+</html>

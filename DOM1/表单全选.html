@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单全选</title>
+</head>
+<style>
+    table{
+        margin: auto;
+    }
+    thead tr {
+        height: 30px;
+        background-color: skyblue;
+    }
+
+    tbody tr {
+        height: 30px;
+    }
+
+    tbody td {
+        border-bottom: 1px solid #d7d7d7;
+        font-size: 12px;
+        color: blue;
+    }
+</style>
+
+<body>
+    <div class="wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" id="checkall">
+                    </th>
+                    <th>商品</th>
+                    <th>价格</th>
+                </tr>
+            </thead>
+            <tbody id="checkbody">
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>iphone9</td>
+                    <td>4000</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>iphone10</td>
+                    <td>5000</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>iphone11</td>
+                    <td>6000</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>iphone12</td>
+                    <td>7000</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>iphone13</td>
+                    <td>8000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        var checkall=document.getElementById('checkall');
+        var checkbody=document.getElementById('checkbody').getElementsByTagName('input');
+        var flag=false;
+        checkall.onclick=function(){
+            flag=!flag;
+            this.checked=flag;
+            for(var i=0;i<checkbody.length;i++){
+                checkbody[i].checked=flag;
+            }
+        }
+        for (let i = 0; i < checkbody.length; i++) {
+            checkbody[i].onclick=function(){
+                var flag=true;
+                for (let i = 0; i < checkbody.length; i++) {
+                    if(!checkbody[i].checked){
+                        flag=false;
+                        break;
+                    }
+                }
+                checkall.checked=flag;
+            }
+            
+        }
+    </script>
+</body>
+
+</html>

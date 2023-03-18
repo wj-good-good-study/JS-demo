@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>显示当前时间</button>
+    <div>某个时间</div>
+    <p></p>
+    <script>
+        var btn=document.querySelector('button');
+        var div=document.querySelector('div');
+    /* 点击按钮显示当前时间 */
+        btn.onclick=function(){
+            div.innerText=getDate();
+        }
+    /* 直接显示当前时间 */
+        var p=document.querySelector('p');
+        p.innerHTML=getDate()+'<strong>美好的一天</strong>';
+        function getDate(){
+            var date=new Date();
+            var year=date.getFullYear();
+            var month=date.getMonth();
+            var dates=date.getDate();
+            var arr=['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+            var day=date.getDay();
+            return '今天是：'+year+'年'+month+'月'+dates+'日'+arr[day];
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 根据类名获得某些元素集合 -->
+    <div class="box">box1</div>
+    <div class="box">box2</div>
+    <div id="nav">
+        <ul>
+            <li>首页</li>
+            <li>产品</li>
+        </ul>
+    </div>
+    <script>
+        var boxs=document.getElementsByClassName('box');
+        console.log(boxs);
+    /* document.querySelector('.xx/#xx') 返回指定选择器的第一个元素对象 */
+        var firstbox=document.querySelector('.box');
+        console.log(firstbox);
+        var nav=document.querySelector('#nav');
+        console.log(nav);
+    /* document.querySelectorAll() 返回指定元素的所有集合*/
+        var allbox=doucment.querySelectorAll('.box');
+        console.log(allbox);
+    </script>
+</body>
+</html>
