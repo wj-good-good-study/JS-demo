@@ -22,4 +22,4 @@ function numberFormat(num) {
     return num < 10 ? '0' + num : num;
 }
 const now=timeFormat(new Date());
-console.log(now);
+// console.log(now);
