@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>放大镜</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .small{
+            height: 400px;
+            width: 400px;
+            background: url(./images/small.jpg) no-repeat 0 0;
+            background-size: cover;
+            position: relative;
+            left: 20px;
+            top: 20px;
+            float: left;
+        }
+        .big{
+            height: 400px;
+            width: 400px;
+            position: relative;
+            float: left;
+            margin-top: 20px;
+            margin-left: 40px;
+            overflow: hidden;/* 图片多余部分删除 */
+            display: none;
+        }
+        .big img{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .flag{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: url(./images/msk.png) repeat;
+            background-color: transparent;
+            overflow: hidden;
+            display: none;
+        }
+        .m{
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            /* background: rgba(100, 100, 100, .5); */
+            background-color: transparent;
+            z-index: 99;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+    <!-- 小图 -->
+    <div class="small">
+        <!-- 蒙版 -->
+        <div class="m"></div>
+        <!-- 小滑块 -->
+        <div class="flag"></div>
+    </div>
+    <!-- 大图 -->
+    <div class="big">
+        <img src="./images/big.jpg" id="bigImg" alt="">
+    </div>
+    <script>
+        var small=getClass('small');
+        var big=getClass('big');
+        var flag=getClass('flag');
+        var bigImg=document.querySelector('#bigImg');
+        var m=getClass('m');
+        /* 添加事件 */
+        m.addEventListener('mousemove',function(e){
+            var ev=e||window.event;
+            var mouseX=ev.offsetX;
+            var mouseY=ev.offsetY;
+            // console.log(mouseX,mouseY);
+            flag.style.display=big.style.display='block';
+            flag.style.left=parseInt(mouseX-flag.offsetWidth/2)+'px';
+            flag.style.top=parseInt(mouseY-flag.offsetHeight/2)+'px';
+            //边界检测
+            flag.style.left=parseInt(flag.style.left)<0?0:flag.style.left;
+            flag.style.left=parseInt(flag.style.left)>(small.offsetWidth-flag.offsetWidth)?(small.offsetWidth-flag.offsetWidth)+'px':flag.style.left;
+            flag.style.top=parseInt(flag.style.top)<0?0:flag.style.top;
+            flag.style.top=parseInt(flag.style.top)>(small.offsetHeight-flag.offsetHeight)?(small.offsetHeight-flag.offsetHeight)+'px':flag.offsetHeight;
+            //移动大图
+            bigImg.style.left=-2*parseInt(flag.style.left)+'px';
+            bigImg.style.top=-2*parseInt(flag.style.top)+'px';
+
+        },false)
+
+        m.addEventListener('mouseout',function(e){
+            flag.style.display=big.style.display='none';
+
+        },false)
+
+
+
+
+        function getClass(c){
+            return c!==undefined?document.querySelector('.'+c):'';
+        }
+    </script>
+
+</body>
+</html>

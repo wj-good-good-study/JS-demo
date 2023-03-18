@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 页面全部加载完毕才运行窗口加载事件 */
+        // window.onload=function(){
+        //     var btn=document.querySelector('button');
+        //     btn.addEventListener('click',function(){
+        //         alert('点击我');
+        //     })
+        // }
+        /* 新的 */
+        window.addEventListener('load',function(){
+            var btn=document.querySelector('button');
+            btn.addEventListener('click',function(){
+                alert('点击我');
+            })
+        })
+        /* 标签加载完就可以执行，适用于图片多的场景 */
+        document.addEventListener('DomConetentLoaded',function(){
+            alert(33);
+        })
+    </script>
+    <button>点击</button>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            position: absolute;
+            top: 100px;
+            left: 400px;
+            width: 150px;
+            height: 34px;
+            
+        }
+        span{
+            margin: 2px;
+            display:inline-block;
+            width: 33px;
+            height: 33px;
+            background-color: black;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <span class="hour">倒</span>
+        <span class="minute">计</span>
+        <span class="second">时</span>
+    </div>
+    <script>
+        var hour=document.querySelector('.hour');
+        var minute=document.querySelector('.minute');
+        var second=document.querySelector('.second');
+        var inputTime=+new Date('2022-9-19 24:00');
+        setInterval(countDown,1000);
+        function countDown(){
+            var nowTime=+new Date();
+            var times=(inputTime-nowTime)/1000;
+            var d=parseInt(times/60/60/24);
+            d=d<10?'0'+d:d;
+            var h=parseInt(times/60/60%24);
+            h=h<10?'0'+h:h;
+            hour.innerHTML=h;
+            var m=parseInt(times/60%60);
+            minute.innerHTML=m;
+            m=m<10?'0'+m:m;
+            var s=parseInt(times%60);
+            s=s<10?'0'+s:s;
+            second.innerHTML=s;
+            // return d+'天'+h+'时'+m+'分'+s+'秒';
+        }
+    </script>
+</body>
+</html>
