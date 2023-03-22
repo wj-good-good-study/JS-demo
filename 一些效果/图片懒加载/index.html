@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>图片懒加载</title>
+    <style>
+        img {
+            width: 510px;
+            height: 600px;
+            margin-top: 100px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <img data-src="./img/h1.png" alt="">
+    <img data-src="./img/h2.png" alt="">
+    <img data-src="./img/h3.png" alt="">
+    <img data-src="./img/h4.png" alt="">
+    <img data-src="./img/h5.png" alt="">
+    <img data-src="./img/h6.png" alt="">
+
+    <script>
+        // 方法1
+        // function lazyLoad() {
+        //     const imgs = document.querySelectorAll('img')
+        //     const clientHeight = document.documentElement.clientHeight
+        //     const scrollTop = document.documentElement.scrollTop
+        //     //n是第0张图片，为了减少for循环次数，对于前面的图片将不再进行判断操作
+        //     let n=0
+        //     for (let i = n; i < imgs.length; i++) {
+        //         //不仅仅是高度的判断，同时自身属性如果已经有src属性，就不需要在进行赋值操作
+        //         if(imgs[i].offsetTop<clientHeight+scrollTop && !imgs[i].getAttribute('src')){
+        //             //设置元素的属性：元素.setAttribute('属性名',属性值),如果之前没有这个属性，会新增；如果有，会将值修改
+        //             imgs[i].setAttribute('src',imgs[i].dataset.src)
+        //             n=i+1
+        //         }
+        //     }
+        // }
+        // 方法2
+        function lazyLoad() {
+            const imgs = document.querySelectorAll('img')
+            let n = 0
+            for (let i = n; i < imgs.length; i++) {
+                const imgTop = imgs[i].getBoundingClientRect().top
+                if (imgTop < window.innerHeight && !imgs[i].getAttribute('src')) {
+                    imgs[i].setAttribute('src', imgs[i].dataset.src)
+                    n = i + 1
+                }
+            }
+            // console.log('被调用了')
+        }
+        function debounse(fn,delay){
+            let start=0
+            let timer
+            return function (){
+                if(!start) start=new Date()
+                let now=new Date()
+                //上一次到现在还剩多少时间
+                let time=delay-(now-start)
+                //处理this的指向和传递参数
+                let context=this
+                let args=arguments
+                //再次被调用时清空上一个定时器
+                clearTimeout(timer)
+                if(time<0){
+                    fn.apply(context,args)
+                    start=now
+                }else{
+                    timer=setTimeout(()=>{
+                        fn.apply(context,args)
+                        start=now
+                    },time)
+                }
+            }
+        }
+        lazyLoad()
+        window.addEventListener('scroll', debounse(lazyLoad,1000))
+    </script>
+</body>
+
+</html>
