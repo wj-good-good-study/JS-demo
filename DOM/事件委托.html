@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件委托</title>
+    <style>
+        .click {
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>第1个li</li>
+        <li>第2个li</li>
+        <li>第3个li</li>
+        <li>第4个li</li>
+        <li>第5个li</li>
+        <p>bububu</p>
+    </ul>
+    <script>
+        const ul = document.querySelector('ul')
+        ul.addEventListener('click', function (e) { 
+            if (e.target.tagName === 'LI')
+                e.target.classList.add('click');
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下划显示搜索栏</title>
+</head>
+<style>
+    body {
+        height: 3000px;
+        width: 100%;
+    }
+
+    .header {
+        width: 100%;
+        height: 80px;
+        background-color: #b392f0;
+        position: fixed;
+        text-align: center;
+        color: #fff;
+        line-height: 80px;
+        transition: all .5s;
+        z-index: 100;
+    }
+
+    .content {
+        width: 100px;
+        height: 200px;
+        margin: 0 auto;
+        position: relative;
+        top: 200px;
+        background-color: skyblue;
+    }
+</style>
+
+<body>
+    <div class="header">
+        这是搜索框
+    </div>
+    <div class="content">
+        这是内容
+    </div>
+    <script>
+        //offsetLeft和offsetTop是针对父元素的的距离，是只读属性
+        //offsetWidth和offsetHeight是获取该元素的宽和高
+        const header = document.querySelector('.header')
+        const header_height = header.offsetHeight
+        const content_top = document.querySelector('.content').offsetHeight
+        window.addEventListener('load', function () {
+            header.style.top = - 1 * header_height + 'px'
+        })
+        window.addEventListener('scroll', function () {
+            const scroll_height = document.documentElement.scrollTop
+            if (scroll_height >= content_top) {
+                header.style.top = 0
+            } else {
+                header.style.top = -1 * header_height + 'px'
+            }
+        })
+    </script>
+</body>
+
+</html>

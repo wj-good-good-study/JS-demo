@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滑块跟随移动效果</title>
+    <style>
+        ul {
+            width: 500px;
+            height: 60px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            height: 40px;
+            width: 100px;
+            line-height: 40px;
+            color: #000;
+        }
+
+        .slider {
+            height: 5px;
+            border-radius: 5px;
+            background-color: pink;
+            position: absolute;
+            transition: all .3s;
+        }
+
+        .active {
+            font-weight: bold;
+            color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>第1个滑块</li>
+        <li>第2个滑块</li>
+        <li>第3个滑块</li>
+        <li>第4个滑块</li>
+        <li>第5个滑块</li>
+        <div class="slider"></div>
+    </ul>
+    <script>
+        const liList = document.querySelectorAll('li')
+        const slider = document.querySelector('.slider')
+        const ul = document.querySelector('ul')
+        window.addEventListener('load', function () {
+            slider.style.width = '50px'
+            slider.style.left = (liList[0].offsetLeft+(liList[0].offsetWidth-slider.offsetWidth)/2) + 'px'
+            slider.style.top = liList[0].offsetHeight + 10 + 'px'
+            liList[0].classList.add('active')
+        })
+        ul.addEventListener('click', function (e) {
+            const active = document.querySelector('.active')
+            active.classList.remove('active')
+            e.target.classList.add('active')
+            const slider_left = slider.offsetLeft
+            slider.style.transform = 'translateX(' + (e.target.offsetLeft-ul.offsetLeft) + 'px)'
+        })
+    </script>
+</body>
+
+</html>
