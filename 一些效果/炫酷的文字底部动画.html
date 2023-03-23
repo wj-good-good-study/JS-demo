@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>炫酷的文字底部动画</title>
+    <style>
+        span {
+            font-size: 50px;
+        }
+        .underline{
+            background : linear-gradient(to right,#ec695c,#61c454) no-repeat bottom right;
+            background-size: 0 5px;
+            transition: background-size 1300ms;    
+        }
+        span:hover{
+            background-position-x: left;
+            background-size: 100% 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <span class="underline">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi fugit itaque laboriosam ducimus esse
+        accusantium aliquid placeat consequatur adipisci molestiae perspiciatis assumenda doloribus laudantium aperiam
+        tempore quibusdam quos, enim debitis.</span>
+</body>
+
+</html>
