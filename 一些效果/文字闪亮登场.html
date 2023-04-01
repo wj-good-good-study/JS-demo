@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字闪亮登场</title>
+    <style>
+        body {
+            background-color: #000;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .text {
+            width: 800px;
+        }
+
+        .lorem {
+            color: #fff;
+        }
+
+        .lorem span {
+            animation: lorem 0.1s both;
+        }
+
+        @keyframes lorem {
+            0% {
+                opacity: 0;
+            }
+
+            65% {
+                opacity: 1;
+                text-shadow: 0 0 25px white;
+            }
+
+            75% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.75;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="text">
+        <h1 class="lorem">lorem</h1>
+        <p class="lorem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est unde officia mollitia sint quas
+            saepe, rem, illo
+            praesentium, porro impedit eius illum dolorem ab sed cum ut omnis quisquam dolore.lorem
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus voluptate modi animi aliquam asperiores
+            amet ullam, dignissimos sequi hic quisquam nemo doloribus obcaecati vero officia sapiente fugit
+            necessitatibus laboriosam voluptatibus.
+        </p>
+    </div>
+    <script>
+        let lorems = document.querySelectorAll('.lorem')
+        lorems.forEach(lorem => {
+            const words = lorem.textContent.split('')
+            lorem.textContent = ''
+            words.forEach((word, index) => {
+                let span = document.createElement('span')
+                span.textContent = word
+                span.style.animationDelay = `${index * 0.03}s`
+                lorem.append(span)
+            })
+
+        });
+    </script>
+</body>
+
+</html>
