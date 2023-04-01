@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>晃动的水和杯子</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 900px;
+            overflow: hidden;
+            display: flex;
+            background-color: #fdfafa;
+        }
+        .glass{
+            width: 200px;
+            height: 200px;
+            box-shadow: inset 0 0 150px #07b1ee;
+            position: relative;
+            margin: auto;
+            /* overflow: hidden; */
+            clip-path: polygon(
+                0 0,
+                100% 0,
+                75% 100%,
+                25% 100%
+                
+            );
+        }
+        .glass::before{
+            content: "";
+            width: 200%;
+            height: 200%;
+            background-color: #fff;
+            position: absolute;
+            top: -150%;
+            left: -50%;
+            animation: animate 2s linear infinite;
+            border-radius: 20% 40% 30% 60%;
+        }
+
+        @keyframes animate{
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="glass"></div>
+</body>
+
+</html>
